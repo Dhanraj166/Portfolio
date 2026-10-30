@@ -1,0 +1,82 @@
+/* =========================================================
+   TechMarquee.css
+   Solid dark accent strip with continuous scrolling tech tags.
+   ========================================================= */
+
+.marquee {
+  overflow: hidden;
+  padding: 20px 0;
+  background: #111111;
+  color: #fffdfa;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.marquee-group li {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(255, 253, 250, 0.88);
+  transition: color 0.2s ease;
+}
+
+.marquee-group li:hover {
+  color: var(--color-accent);
+}
+
+/* Orange dot separator */
+.marquee-group li::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 6px rgba(242, 140, 56, 0.5);
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    width: 100%;
+    animation: none;
+  }
+
+  .marquee-group {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 8px;
+  }
+
+  .marquee-group[aria-hidden='true'] {
+    display: none;
+  }
+}

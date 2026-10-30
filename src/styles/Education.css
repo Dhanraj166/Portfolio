@@ -1,0 +1,133 @@
+/* =========================================================
+   Education.css
+   Vertical timeline: dates on left, line + card on right.
+   ========================================================= */
+
+.education-list {
+  max-width: 820px;
+  margin: 56px auto 0;
+}
+
+.education-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.education-list li:last-child .education-item {
+  padding-bottom: 0;
+}
+
+.education-period {
+  padding-top: 4px;
+  text-align: right;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--color-muted);
+}
+
+/* Timeline vertical line */
+.education-content {
+  position: relative;
+  padding-left: 32px;
+  border-left: 2px solid var(--color-border);
+}
+
+.education-list li:last-child .education-content {
+  border-left-color: transparent;
+}
+
+/* Orange dot on the timeline with cream halo ring */
+.education-content::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 5px var(--color-bg);
+}
+
+/* ---------- Card ---------- */
+.education-card {
+  padding: 26px 30px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(242, 140, 56, 0.45);
+  box-shadow: 0 12px 36px rgba(17, 17, 17, 0.08);
+}
+
+.education-type {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--color-muted);
+}
+
+.education-title {
+  margin: 8px 0;
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: 1.65rem;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.education-institution {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.education-detail {
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .education-list {
+    margin-top: 40px;
+  }
+
+  .education-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-bottom: 32px;
+  }
+
+  .education-period {
+    padding-top: 0;
+    text-align: left;
+    padding-left: 32px;
+    font-size: 1.25rem;
+  }
+
+  .education-content {
+    padding-left: 24px;
+  }
+
+  .education-card {
+    padding: 22px 20px;
+  }
+
+  .education-title {
+    font-size: 1.35rem;
+  }
+}

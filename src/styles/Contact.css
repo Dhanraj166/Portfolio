@@ -1,0 +1,82 @@
+/* =========================================================
+   Contact.css
+   Modern dark rounded panel with centered content, email button,
+   and social links.
+   ========================================================= */
+
+.contact-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 88px 32px;
+  text-align: center;
+  background:
+    radial-gradient(
+      50% 70% at 88% 0%,
+      rgba(242, 140, 56, 0.32) 0%,
+      rgba(242, 140, 56, 0) 70%
+    ),
+    radial-gradient(
+      40% 50% at 12% 100%,
+      rgba(254, 222, 195, 0.18) 0%,
+      rgba(254, 222, 195, 0) 70%
+    ),
+    #111111;
+  border-radius: 32px;
+  color: #fffdfa;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+}
+
+.contact-panel .section-title {
+  color: #ffffff;
+}
+
+.contact-panel .accent-serif {
+  color: #fedec3;
+}
+
+.contact-text {
+  max-width: 52ch;
+  margin: 24px auto 32px;
+  font-size: 1.05rem;
+  color: rgba(255, 253, 250, 0.78);
+  line-height: 1.65;
+}
+
+.contact-address {
+  margin-top: 24px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.contact-address a {
+  color: rgba(255, 253, 250, 0.88);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  transition: color 0.2s ease;
+}
+
+.contact-address a:hover {
+  color: var(--color-accent);
+}
+
+.contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.contact-panel :focus-visible {
+  outline-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .contact-panel {
+    padding: 56px 20px;
+    border-radius: 24px;
+  }
+}

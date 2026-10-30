@@ -1,0 +1,88 @@
+/* =========================================================
+   Skills.css
+   Numbered rows: number | category title | technology pills.
+   ========================================================= */
+
+.skills-list {
+  margin-top: 56px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skills-row {
+  display: grid;
+  grid-template-columns: 56px minmax(200px, 0.8fr) 2fr;
+  align-items: start;
+  gap: 24px;
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border);
+  transition: border-color 0.25s ease;
+}
+
+.skills-row:hover {
+  border-top-color: var(--color-text);
+}
+
+.skills-number {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--color-muted);
+}
+
+.skills-category {
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+/* ---------- Technology pills ---------- */
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills-tag {
+  padding: 7px 18px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.skills-tag:hover {
+  background: #111111;
+  border-color: #111111;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .skills-list {
+    margin-top: 40px;
+  }
+
+  .skills-row {
+    grid-template-columns: 40px 1fr;
+    gap: 16px 12px;
+    padding: 24px 0;
+  }
+
+  .skills-category {
+    font-size: 1.35rem;
+  }
+
+  .skills-tags {
+    grid-column: 1 / -1;
+  }
+}

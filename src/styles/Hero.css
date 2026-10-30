@@ -1,0 +1,521 @@
+/* =========================================================
+   Hero.css
+   Pixel-accurate recreation of the Madison reference layout:
+   - Warm cream, pale yellow, and peach glow background
+   - Centered large portrait photo extending to bottom with fade
+   - Oversized italic serif "Hey, there" behind portrait
+   - Left pill availability badge with orange indicator
+   - Right concise introduction
+   - Bottom-left bold condensed "I AM DHANRAJ"
+   - Bottom-right stacked "JAVA FULL STACK DEVELOPER"
+   - 20px left and right margins so text never touches the edge
+   ========================================================= */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  padding-top: var(--nav-height);
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+/* ---------- 1. Warm Cream, Yellow & Peach Glow Background ---------- */
+.hero-gradient-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    /* Left subtle yellow-peach glow */
+    radial-gradient(
+      ellipse 45% 55% at 2% 48%,
+      rgba(255, 236, 186, 0.92) 0%,
+      rgba(255, 245, 218, 0.45) 45%,
+      rgba(255, 253, 250, 0) 75%
+    ),
+    /* Right subtle yellow-peach glow */
+    radial-gradient(
+      ellipse 45% 55% at 98% 48%,
+      rgba(255, 238, 182, 0.92) 0%,
+      rgba(255, 245, 218, 0.45) 45%,
+      rgba(255, 253, 250, 0) 75%
+    ),
+    /* Center warm peach spotlight behind head & shoulders */
+    radial-gradient(
+      ellipse 58% 52% at 50% 46%,
+      rgba(254, 222, 195, 0.72) 0%,
+      rgba(255, 241, 214, 0.4) 48%,
+      rgba(255, 253, 250, 0) 80%
+    ),
+    #fffdfa;
+}
+
+/* ---------- 2. Oversized "Hey, there" Heading (Layer z-index: 1) ---------- */
+.hero-heading-wrapper {
+  position: absolute;
+  top: calc(var(--nav-height) + clamp(16px, 5vh, 48px));
+  left: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  user-select: none;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-sizing: border-box;
+}
+
+.hero-bg-heading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 100;
+  font-size: clamp(4.4rem, 10.8vw, 10.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #111111;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  width: 100%;
+  padding-inline: 10px;
+  box-sizing: border-box;
+}
+
+.hero-heading-left {
+  display: inline-block;
+  transform: translateY(-2px);
+  margin-left: 75px;
+}
+
+/* Spacer allows Dhanraj's head to sit centered between "Hey," and "there" */
+.hero-heading-gap {
+  display: inline-block;
+  width: clamp(120px, 24vw, 300px);
+  flex-shrink: 0;
+}
+
+.hero-heading-right {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+/* ---------- 3. Central Profile Photo (Layer z-index: 2) ---------- */
+.hero-photo-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+  height: 100%;
+}
+
+.hero-photo-frame {
+  position: relative;
+  width: min(92vw, clamp(540px, 56vw, 860px));
+  height: clamp(620px, 88vh, 1050px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+  display: block;
+  filter: drop-shadow(0 12px 32px rgba(17, 17, 17, 0.06));
+}
+
+/* ---------- 4. Foreground Content Grid (Layer z-index: 3) ---------- */
+.hero-overlay-grid {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100svh - var(--nav-height));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  padding-bottom: clamp(32px, 6vh, 60px);
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* Left & Right slots in upper-mid row */
+.hero-badge-slot {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: start;
+  margin-top: clamp(16px, 4vh, 48px);
+  margin-left: 20px;
+  pointer-events: auto;
+}
+
+.hero-intro-slot {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  margin-top: clamp(16px, 4vh, 48px);
+  margin-right: 20px;
+  pointer-events: auto;
+}
+
+/* Bottom Left & Right typography with dedicated 20px insets */
+.hero-name-slot {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  margin-left: 20px;
+  pointer-events: auto;
+}
+
+.hero-title-slot {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  margin-right: 20px;
+  pointer-events: auto;
+}
+
+/* ---------- 5. Availability Badge (Pill with Orange Indicator) ---------- */
+.hero-availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px 9px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(237, 228, 216, 0.85);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 18px rgba(17, 17, 17, 0.04);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #2b2723;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-availability-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(17, 17, 17, 0.08);
+}
+
+.hero-badge-indicator {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+}
+
+/* Outer concentric orange ring */
+.hero-badge-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(242, 140, 56, 0.25);
+  animation: badge-ring-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Core solid orange dot */
+.hero-badge-indicator::after {
+  content: '';
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 6px rgba(242, 140, 56, 0.5);
+}
+
+@keyframes badge-ring-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.85;
+  }
+}
+
+.hero-badge-text {
+  white-space: nowrap;
+}
+
+/* ---------- 6. Right Introduction Text ---------- */
+.hero-intro-text {
+  max-width: 250px;
+  font-size: 0.92rem;
+  line-height: 1.52;
+  color: #2b2723;
+  font-weight: 500;
+  text-align: left;
+}
+
+.hero-intro-br {
+  display: inline;
+}
+
+/* ---------- 7. Bottom-Left: Name ("I AM DHANRAJ") ---------- */
+.hero-name-group {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-variation-settings: 'wdth' 75, 'wght' 900;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #111111;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+.hero-name-lead {
+  font-size: clamp(3rem, 6.8vw, 6.2rem);
+  line-height: 0.88;
+  display: block;
+}
+
+.hero-name-main {
+  font-size: clamp(3.8rem, 8.8vw, 8.2rem);
+  line-height: 0.86;
+  display: block;
+  letter-spacing: -0.03em;
+}
+
+/* ---------- 8. Bottom-Right: Professional Title ---------- */
+.hero-title-group {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-variation-settings: 'wdth' 75, 'wght' 900;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #111111;
+  text-align: left;
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+.hero-title-line {
+  font-size: clamp(1.8rem, 4vw, 3.8rem);
+  line-height: 0.92;
+  display: block;
+}
+
+/* ---------- 9. Subtle Entrance Transitions ---------- */
+@keyframes hero-fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-heading-wrapper {
+  animation: hero-fade-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-photo-container {
+  animation: hero-fade-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.hero-badge-slot,
+.hero-intro-slot {
+  animation: hero-fade-rise 0.8s ease 0.25s both;
+}
+
+.hero-name-slot,
+.hero-title-slot {
+  animation: hero-fade-rise 0.8s ease 0.35s both;
+}
+
+/* =========================================================
+   Responsive Breakpoints
+   ========================================================= */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-bg-heading {
+    font-size: clamp(3.6rem, 9.6vw, 7.6rem);
+  }
+
+  .hero-heading-gap {
+    width: clamp(120px, 20vw, 240px);
+  }
+
+  .hero-photo-frame {
+    width: min(88vw, 460px);
+    height: clamp(480px, 75vh, 680px);
+  }
+
+  .hero-intro-text {
+    max-width: 210px;
+    font-size: 0.86rem;
+  }
+
+  .hero-name-lead {
+    font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  }
+
+  .hero-name-main {
+    font-size: clamp(3rem, 7vw, 5.8rem);
+  }
+
+  .hero-title-line {
+    font-size: clamp(1.5rem, 3.4vw, 2.8rem);
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 12px);
+    padding-bottom: 48px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  .hero-heading-wrapper {
+    position: relative;
+    top: auto;
+    margin-bottom: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .hero-bg-heading {
+    font-size: clamp(3rem, 12vw, 4.6rem);
+    justify-content: center;
+    gap: 14px;
+    padding-inline: 10px;
+  }
+
+  .hero-heading-gap {
+    display: none;
+  }
+
+  .hero-photo-container {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    height: auto;
+    margin-block: 10px 24px;
+  }
+
+  .hero-photo-frame {
+    width: min(84vw, 320px);
+    height: 400px;
+    margin-inline: auto;
+  }
+
+  .hero-overlay-grid {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    pointer-events: auto;
+    box-sizing: border-box;
+  }
+
+  .hero-badge-slot {
+    order: 1;
+    margin-top: 0;
+    margin-left: 0;
+    justify-self: center;
+  }
+
+  .hero-intro-slot {
+    order: 2;
+    margin-top: 0;
+    margin-right: 0;
+    justify-self: center;
+  }
+
+  .hero-intro-text {
+    max-width: 300px;
+    text-align: center;
+    font-size: 0.92rem;
+  }
+
+  .hero-name-slot {
+    order: 3;
+    margin-left: 0;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .hero-name-group {
+    align-items: center;
+  }
+
+  .hero-name-lead {
+    font-size: 2.6rem;
+  }
+
+  .hero-name-main {
+    font-size: 3.6rem;
+  }
+
+  .hero-title-slot {
+    order: 4;
+    margin-right: 0;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .hero-title-group {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-title-line {
+    font-size: 1.7rem;
+  }
+}

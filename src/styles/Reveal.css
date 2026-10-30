@@ -1,0 +1,22 @@
+/* Reveal.css — GSAP handles the animation; this is the initial hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  visibility: hidden;
+}
+
+/* When GSAP adds this class or directly sets inline styles, element is visible */
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+/* Respect reduced motion — show content immediately */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+}
