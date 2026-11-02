@@ -44,17 +44,13 @@ export const skillCategories = [
     items: ['Git', 'GitHub', 'Postman', 'Eclipse IDE', 'VS Code'],
   },
   {
-    id: 'concepts',
-    title: 'Core Computer Science Concepts',
+    id: 'AI',
+    title: 'AI Tools & Technologies',
     items: [
-      'Object-Oriented Programming',
-      'Data Structures & Algorithms',
-      'Collections Framework',
-      'Exception Handling',
-      'MVC Architecture',
-      'SDLC',
-      'Debugging & Troubleshooting',
-      'Agile',
+      'Cursor',
+      'GitHub Copilot',
+      'Claude Code',
+      'Antigravity'
     ],
   },
 ]
